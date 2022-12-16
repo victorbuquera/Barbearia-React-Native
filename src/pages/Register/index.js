@@ -9,8 +9,10 @@ import {
 } from 'react-native';
 
 import * as Animatable from 'react-native-animatable';
+import {useNavigation} from '@react-navigation/native';
 
 export default function RegisterScreen() {
+  const navigation = useNavigation();
   const [firstName, setFirtsName] = useState(null);
   const [lastName, setLastName] = useState(null);
   const [email, setEmail] = useState(null);
@@ -69,6 +71,11 @@ export default function RegisterScreen() {
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>Acessar</Text>
         </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.buttonRegister}
+          onPress={() => navigation.navigate('SignIn')}>
+          <Text style={styles.registerText}>Voltar para tela de login</Text>
+        </TouchableOpacity>
       </Animatable.View>
     </View>
   );
@@ -98,7 +105,7 @@ const styles = StyleSheet.create({
     paddingEnd: '5%',
   },
   title: {
-    fontSize: 20,
+    fontSize: 18,
     marginTop: 10,
     marginLeft: 0,
   },

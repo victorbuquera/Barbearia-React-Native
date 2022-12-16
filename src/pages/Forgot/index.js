@@ -9,7 +9,7 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
 
-export default function SignIn() {
+export default function Forgot() {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
@@ -20,22 +20,14 @@ export default function SignIn() {
       <Animatable.View animation="fadeInUp" style={styles.containerForm}>
         <Text style={styles.title}>Email</Text>
         <TextInput placeholder="Digite um email" style={styles.input} />
-        <Text style={styles.title}>Senha</Text>
-        <TextInput placeholder="Digite uma senha" style={styles.input} />
         <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Acessar</Text>
+          <Text style={styles.buttonText}>Recuperar senha</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.buttonRegister}
           onPress={() => navigation.navigate('Register')}>
-          <Text style={styles.registerText}>Cadastre-se</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.buttonForgot}
-          onPress={() => navigation.navigate('Forgot')}>
-          <Text style={styles.forgottenText}>Esqueceu sua senha?</Text>
+          <Text style={styles.registerText}>Voltar para tela de login</Text>
         </TouchableOpacity>
       </Animatable.View>
     </View>

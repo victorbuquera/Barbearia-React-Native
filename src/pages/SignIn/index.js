@@ -8,9 +8,13 @@ import {
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
+import {auth} from '././commom/auth.js';
 
 export default function SignIn() {
   const navigation = useNavigation();
+  const [email, setEmail] = useState(0);
+  const [password, setPassword] = useState(0);
+
   return (
     <View style={styles.container}>
       <Animatable.View style={styles.containerHeader}>
@@ -19,9 +23,20 @@ export default function SignIn() {
 
       <Animatable.View animation="fadeInUp" style={styles.containerForm}>
         <Text style={styles.title}>Email</Text>
-        <TextInput placeholder="Digite um email" style={styles.input} />
+        <TextInput
+          placeholder="Digite um email"
+          style={styles.input}
+          onChangeText={text => setEmail(text)}
+          value={email}
+        />
         <Text style={styles.title}>Senha</Text>
-        <TextInput placeholder="Digite uma senha" style={styles.input} />
+        <TextInput
+          secureTextEntry
+          placeholder="Digite uma senha"
+          style={styles.input}
+          onChangeText={text => setPassword(text)}
+          value={password}
+        />
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>Acessar</Text>
         </TouchableOpacity>

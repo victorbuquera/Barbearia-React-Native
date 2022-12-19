@@ -8,13 +8,26 @@ import {
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
-import {auth} from '././commom/auth.js';
+import {auth} from '../../commom/auth';
+import Login from '../Home';
 
 export default function SignIn() {
   const navigation = useNavigation();
   const [email, setEmail] = useState(0);
   const [password, setPassword] = useState(0);
 
+  async function handleAccess() {
+    const response = await Login.auth(email, password);
+    try {
+      if (response.success) {
+        console.log('deu certo');
+      } else {
+        console('Usuário ou senha inválido');
+      }
+    } catch (error) {
+      throw error;
+    }
+  }
   return (
     <View style={styles.container}>
       <Animatable.View style={styles.containerHeader}>
@@ -37,7 +50,7 @@ export default function SignIn() {
           onChangeText={text => setPassword(text)}
           value={password}
         />
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={handleAccess}>
           <Text style={styles.buttonText}>Acessar</Text>
         </TouchableOpacity>
 

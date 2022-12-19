@@ -8,9 +8,7 @@ import {
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
-import {auth} from '../../commom/auth';
-import Login from '../Home';
-
+import Login from '../../commom/auth';
 export default function SignIn() {
   const navigation = useNavigation();
   const [email, setEmail] = useState(0);
@@ -19,6 +17,7 @@ export default function SignIn() {
   async function handleAccess() {
     const response = await Login.auth(email, password);
     try {
+      console.log(response);
       if (response.success) {
         console.log('deu certo');
       } else {

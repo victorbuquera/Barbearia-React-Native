@@ -17,7 +17,8 @@ export default function SignIn() {
   async function handleAccess() {
     const response = await Login.auth(email, password);
     try {
-      console.log(response);
+      console.log(JSON.stringify(response));
+      alert(JSON.stringify(response));
       if (response.success) {
         console.log('deu certo');
       } else {

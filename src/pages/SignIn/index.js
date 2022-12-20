@@ -17,12 +17,10 @@ export default function SignIn() {
   async function handleAccess() {
     const response = await Login.auth(email, password);
     try {
-      console.log(JSON.stringify(response));
-      alert(JSON.stringify(response));
-      if (response.success) {
-        console.log('deu certo');
-      } else {
-        console('Usuário ou senha inválido');
+      if (response.token) {
+        alert('deu certo ' + response.token);
+      } else if (response.message) {
+        alert(response.message);
       }
     } catch (error) {
       throw error;

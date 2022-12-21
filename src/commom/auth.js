@@ -28,14 +28,15 @@ const Login = {
 };
 
 export default Login;
-const register = {
-  async Register(name, lastName, email, cel, password, passwordConfirmation) {
+
+const SignUp = {
+  async register(name, lastName, email, phone, password, passwordConfirmation) {
     try {
-      const response = await axios.post('http://10.0.2.2/api/register', {
+      const response = await axios.post('http://10.0.3.2/api/register', {
         name,
         lastName,
         email,
-        cel,
+        phone,
         password,
         passwordConfirmation,
       });

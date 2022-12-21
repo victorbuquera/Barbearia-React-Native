@@ -8,7 +8,9 @@ import {
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
+import HomeScreen from '../Home';
 import Login from '../../commom/auth';
+
 export default function SignIn() {
   const navigation = useNavigation();
   const [email, setEmail] = useState(0);
@@ -18,7 +20,7 @@ export default function SignIn() {
     const response = await Login.auth(email, password);
     try {
       if (response.token) {
-        alert('deu certo ' + response.token);
+        navigation.navigate('Home');
       } else if (response.message) {
         alert(response.message);
       }

@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import {useDispatch} from 'react-redux';
 import * as Animatable from 'react-native-animatable';
 import Login from '../../commom/auth';
 
@@ -14,12 +15,16 @@ export default function SignIn() {
   const navigation = useNavigation();
   const [email, setEmail] = useState(0);
   const [password, setPassword] = useState(0);
+  const dispatch = useDispatch();
 
   async function handleAccess() {
+
     const response = await Login.auth(email, password);
     try {
       if (response.token) {
-        navigation.navigate('Home');
+        // Dispara a ação de login
+        dispatch({type: 'LOGIN', user: {email: email, token: response.token}});
+        alert(response.token)
       } else if (response.message) {
         alert(response.message);
       }

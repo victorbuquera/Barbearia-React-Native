@@ -24,9 +24,6 @@ export default function SignIn() {
       if (response.token) {
         // Dispara a ação de login
         dispatch({type: 'LOGIN', user: {email: email, token: response.token}});
-        alert(response.token)
-      } else if (response.message) {
-        alert(response.message);
       }
     } catch (error) {
       throw error;

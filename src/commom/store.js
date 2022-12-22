@@ -1,10 +1,8 @@
 import {createStore} from 'redux';
 
-// Define as ações do aplicativo
 const LOGIN = 'LOGIN';
 const LOGOUT = 'LOGOUT';
 
-// Define as reduções de estado para cada ação
 function reducer(state, action) {
   switch (action.type) {
     case LOGIN:
@@ -23,7 +21,6 @@ function reducer(state, action) {
   }
 }
 
-// Cria a store do Redux com o reducer e o estado inicial
 const store = createStore(reducer, {loggedIn: false, user: null});
 
 export default store;

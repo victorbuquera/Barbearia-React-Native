@@ -1,7 +1,7 @@
 import React from 'react';
 import {Provider} from 'react-redux';
 import Router from './src/routes/Router';
-import store from './src/commom/store'; // Importa a store do Redux
+import store from './src/commom/store';
 
 export default function App() {
   return (

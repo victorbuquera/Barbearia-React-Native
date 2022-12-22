@@ -1,18 +1,5 @@
 import axios from 'axios';
 
-/*const Login = {
-  async auth(email, password) {
-    const response = await axios.post('http://10.0.2.2/api/signin', {
-      email,
-      password,
-    });
-    return response.data;
-  },
-};
-
-export default Login;
-*/
-
 const Login = {
   async auth(email, password) {
     try {

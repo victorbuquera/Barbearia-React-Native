@@ -20,3 +20,7 @@ export default function HomeScreen() {
     </View>
   );
 }
+//TO DO LIST
+//Armazenar token no local storage e testar se o app desloga quando é fechado e aberto novamente
+//CRIAR NOVA BRANCH PARA LOGOUT
+//Definir função de logout

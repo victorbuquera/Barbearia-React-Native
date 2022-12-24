@@ -1,4 +1,5 @@
 {
   "name": "BarbeariaReact",
-  "displayName": "BarbeariaReact"
-}
+  "displayName": "BarbeariaReact",
+  "icon": "/src/assets/logo.png"
+ }

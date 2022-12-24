@@ -23,7 +23,7 @@ export default function RegisterScreen() {
   const [passwordError, setPasswordError] = useState(false);
 
   useEffect(() => {
-    if (password !== passwordConfirmation) {
+    if (password !== passwordConfirmation && passwordConfirmation !== '') {
       setPasswordError(true);
     } else {
       setPasswordError(false);
@@ -89,17 +89,19 @@ export default function RegisterScreen() {
           value={password}
         />
 
-        <Text style={styles.title}>Confirme sua senha</Text>
-        <TextInput
-          placeholder="Confirme sua senha"
-          secureTextEntry
-          style={[
-            styles.input,
-            passwordError ? {borderColor: 'red'} : {borderColor: '#ccc'},
-          ]}
-          onChangeText={setPasswordConfirmation}
-          value={passwordConfirmation}
-        />
+        <Animatable.View animation={passwordError ? 'shake' : undefined}>
+          <Text style={styles.title}>Confirme sua senha</Text>
+          <TextInput
+            placeholder="Confirme sua senha"
+            secureTextEntry
+            style={[
+              styles.input,
+              passwordError ? {borderColor: 'red'} : {borderColor: '#ccc'},
+            ]}
+            onChangeText={setPasswordConfirmation}
+            value={passwordConfirmation}
+          />
+        </Animatable.View>
 
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>Cadastrar</Text>

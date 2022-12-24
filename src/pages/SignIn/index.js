@@ -18,7 +18,6 @@ export default function SignIn() {
   const dispatch = useDispatch();
 
   async function handleAccess() {
-
     const response = await Login.auth(email, password);
     try {
       if (response.token) {
@@ -74,7 +73,7 @@ export default function SignIn() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#303030',
+    backgroundColor: '#3C3849',
   },
   containerHeader: {
     marginTop: '14%',
@@ -87,7 +86,7 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
   containerForm: {
-    backgroundColor: '#fff',
+    backgroundColor: '#FFF',
     flex: 1,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,

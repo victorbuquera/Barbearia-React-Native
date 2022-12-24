@@ -22,23 +22,25 @@ export default function RegisterScreen() {
   const [passwordConfirmation, setPasswordConfirmation] = useState(null);
   const [passwordError, setPasswordError] = useState(false);
 
-  useEffect(() => {
+  async function handleRegister() {
     if (password !== passwordConfirmation && passwordConfirmation !== '') {
       setPasswordError(true);
-    } else {
-      setPasswordError(false);
+      return;
     }
-  }, [password, passwordConfirmation, passwordError]);
+    setPasswordError(false);
 
-  async function handleRegister() {
-    const response = await SignUp.Register(
-      firstName,
-      lastName,
-      email,
-      phone,
-      password,
-      passwordConfirmation,
-    );
+    try {
+      const response = await SignUp.Register(
+        firstName,
+        lastName,
+        email,
+        phone,
+        password,
+        passwordConfirmation,
+      );
+    } catch (error) {
+      throw error;
+    }
   }
 
   return (
@@ -103,7 +105,7 @@ export default function RegisterScreen() {
           />
         </Animatable.View>
 
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={handleRegister}>
           <Text style={styles.buttonText}>Cadastrar</Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -144,14 +146,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginLeft: 0,
   },
-  /*
-  input: {
-    borderBottomWidth: 1,
-    height: 40,
-    marginBottom: 5,
-    fontSize: 16,
-    marginLeft: 3,
-  },*/
   input: {
     width: '100%',
     borderBottomWidth: 1,

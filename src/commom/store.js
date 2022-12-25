@@ -1,4 +1,4 @@
-import {createStore} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
 
 const LOGIN = 'LOGIN';
 const LOGOUT = 'LOGOUT';
@@ -20,7 +20,6 @@ function reducer(state, action) {
       return state;
   }
 }
-
-const store = createStore(reducer, {loggedIn: false, user: null});
+const store = createStore(reducer, {loggedIn: false, user: null, token: null});
 
 export default store;

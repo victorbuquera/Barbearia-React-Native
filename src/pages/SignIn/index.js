@@ -10,6 +10,7 @@ import {useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
 import * as Animatable from 'react-native-animatable';
 import Login from '../../commom/auth';
+import store from '../../commom/store';
 
 export default function SignIn() {
   const navigation = useNavigation();
@@ -22,7 +23,10 @@ export default function SignIn() {
     try {
       if (response.token) {
         // Dispara a ação de login
-        dispatch({type: 'LOGIN', user: {email: email, token: response.token}});
+        store.dispatch({
+          type: 'LOGIN',
+          user: {email: email, token: response.token},
+        });
       }
     } catch (error) {
       throw error;

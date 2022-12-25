@@ -16,6 +16,7 @@ export default function HomeScreen() {
       <Text>HOME</Text>
       <TouchableOpacity onPress={printToken}>
         <Text>Botão</Text>
+        <Text>{state.value}</Text>
       </TouchableOpacity>
     </View>
   );

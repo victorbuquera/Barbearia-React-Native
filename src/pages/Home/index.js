@@ -2,21 +2,25 @@ import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {View, Text, TouchableOpacity} from 'react-native';
 import store from '../../commom/store';
-import axios from 'axios';
+import {useSelector} from 'react-redux';
 
 export default function HomeScreen() {
-  const state = store.getState();
-  const token = state.user.token;
+  const user = useSelector(state => state.user);
 
   function printToken() {
-    alert(JSON.stringify(state));
+    console.log(user);
   }
+
+  /*   function logout(){
+
+  } */
+
   return (
     <View>
       <Text>HOME</Text>
+      <Text>{JSON.stringify(user)}</Text>
       <TouchableOpacity onPress={printToken}>
         <Text>Botão</Text>
-        <Text>{state.value}</Text>
       </TouchableOpacity>
     </View>
   );

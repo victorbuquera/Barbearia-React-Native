@@ -5,6 +5,10 @@ import * as Animatable from 'react-native-animatable';
 
 import {useNavigation} from '@react-navigation/native';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+
+
 export default function Welcome() {
   const navigation = useNavigation();
 

@@ -1,12 +1,22 @@
 import {createStore} from 'redux';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LOGIN = 'LOGIN';
 const LOGOUT = 'LOGOUT';
 
+const storeData = async (value) => {
+  try {
+    const jsonValue = JSON.stringify(value);
+    await AsyncStorage.setItem('token', jsonValue);
+  } catch (e) {
+    throw e;
+  }
+}
+
 function reducer(state, action) {
   switch (action.type) {
     case LOGIN:
-      console.log('UPDATE DE ESTADO FUNCIONANDO');
+    storeData(action);
       return {
         loggedIn: true,
         user: action.user,

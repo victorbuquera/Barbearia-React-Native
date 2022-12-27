@@ -3,14 +3,21 @@ import {useNavigation} from '@react-navigation/native';
 import {View, Text, TouchableOpacity} from 'react-native';
 import store from '../../commom/store';
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function HomeScreen() {
   const state = store.getState();
   const token = state.user.token;
 
-  function printToken() {
-    alert(JSON.stringify(state));
+  async function printToken() {
+    try {
+      const storageToken = await AsyncStorage.getItem('token');
+      console.log(storageToken);
+    } catch (error) {
+      console.error(error);
+    }
   }
+
   return (
     <View>
       <Text>HOME</Text>

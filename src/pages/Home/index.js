@@ -1,13 +1,12 @@
 import React from 'react';
-import {useNavigation} from '@react-navigation/native';
 import {View, Text, TouchableOpacity} from 'react-native';
 import store from '../../commom/store';
-import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useDispatch} from 'react-redux';
 
 export default function HomeScreen() {
   const state = store.getState();
-  const token = state.user.token;
+  const dispatch = useDispatch();
 
   async function printToken() {
     try {
@@ -18,11 +17,27 @@ export default function HomeScreen() {
     }
   }
 
+  async function handleLogout() {
+    try {
+      // Dispara a ação de logout
+      dispatch({type: 'LOGOUT'});
+
+      // Remove o token do armazenamento do aplicativo
+      await AsyncStorage.removeItem('token');
+    } catch (error) {
+      throw error;
+    }
+  }
+
   return (
     <View>
       <Text>HOME</Text>
       <TouchableOpacity onPress={printToken}>
         <Text>Botão</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={handleLogout}></TouchableOpacity>
+        <Text>LOGOUT</Text>
       </TouchableOpacity>
     </View>
   );

@@ -36,7 +36,7 @@ export default function HomeScreen() {
         <Text>Botão</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={handleLogout}></TouchableOpacity>
+      <TouchableOpacity onPress={handleLogout}>
         <Text>LOGOUT</Text>
       </TouchableOpacity>
     </View>

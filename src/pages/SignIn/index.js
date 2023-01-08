@@ -17,17 +17,25 @@ export default function SignIn() {
   const [password, setPassword] = useState(0);
   const dispatch = useDispatch();
 
+
   async function handleAccess() {
-    const response = await Login.auth(email, password);
     try {
+      const response = await Login.auth(email, password);
       if (response.token) {
         // Dispara a ação de login
         dispatch({type: 'LOGIN', user: {email: email, token: response.token}});
       }
     } catch (error) {
-      throw error;
+      // Trata o erro de conexão aqui
+      if (error.message === 'Network Error') {
+        alert('Erro de conexão');
+      } else {
+        throw error;
+      }
     }
   }
+
+  
   return (
     <View style={styles.container}>
       <Animatable.View style={styles.containerHeader}>
